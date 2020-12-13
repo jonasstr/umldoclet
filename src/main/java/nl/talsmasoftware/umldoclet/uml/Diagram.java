@@ -61,8 +61,9 @@ public abstract class Diagram extends UMLNode {
         IndentingPrintWriter indented = output.indent();
         config.customPlantumlDirectives().forEach(indented::println);
         writeChildrenTo(indented);
-        indented.newline();
-        writeFooterTo(indented);
+        // Don't print footer
+        //indented.newline(); 
+        //writeFooterTo(indented);
         output.append("@enduml").newline();
         return output;
     }
