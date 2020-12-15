@@ -35,6 +35,14 @@ public class PackageDiagram extends Diagram {
     }
 
     @Override
+    protected <IPW extends IndentingPrintWriter> IPW writeChildrenTo(IPW output) {
+        output.append("hide empty fields").newline()
+                .append("hide empty methods").newline()
+                .newline();
+        return super.writeChildrenTo(output);
+    }
+
+    @Override
     protected File getPlantUmlFile() {
         if (pumlFile == null) {
             StringBuilder result = new StringBuilder(getConfiguration().destinationDirectory());
@@ -45,4 +53,6 @@ public class PackageDiagram extends Diagram {
         }
         return pumlFile;
     }
+
+
 }
